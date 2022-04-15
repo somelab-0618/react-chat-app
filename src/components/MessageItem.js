@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Avatar,
   ListItem,
@@ -17,12 +17,18 @@ const useStyles = makeStyles({
   },
 });
 
-export const MessageItem = ({ name, text }) => {
+export const MessageItem = ({ name, text, isLastItem }) => {
+  const ref = useRef(null);
   const classes = useStyles();
   const avatarPath = gravatarPath(name);
 
+  useEffect(() => {
+    if (isLastItem) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [isLastItem]);
   return (
-    <ListItem divider={true}>
+    <ListItem divider={true} ref={ref}>
       <ListItemAvatar>
         <Avatar alt={name} src={avatarPath} />
       </ListItemAvatar>

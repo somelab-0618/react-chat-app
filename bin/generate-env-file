@@ -13,11 +13,11 @@ REACT_APP_FIREBASE_APP_ID='${firebaseSettings.appId}'
 `;
 
 const TRIMMED_ENV_LOCAL = ENV_LOCAL.trim();
-cosnt env_file_name = '.env.local';
+const env_file_name = '.env.local';
 
 try {
-  fs.writeFileSync(env_file_nam, TRIMMED_ENV_LOCAL);
-  console.log(`done! ${env_file_nam} was successfully generated.`)
+  fs.writeFileSync(env_file_name, TRIMMED_ENV_LOCAL);
+  console.log(`done! ${env_file_name} was successfully generated.`)
 } catch(e) {
   console.log(e)
 }
